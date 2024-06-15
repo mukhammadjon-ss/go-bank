@@ -29,6 +29,8 @@ func (server *Server) createAccount(ctx *gin.Context) {
 
 	account, err := server.store.CreateAccount(ctx, arg)
 	if err != nil {
+		pqErr := err.Error()
+		fmt.Println(pqErr)
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 	}
 
