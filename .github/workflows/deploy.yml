@@ -9,13 +9,15 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - name: Chekout code
       uses: actions/checkout@v3
       
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: arn:aws:iam::381492106779:role/github-actions-role
         aws-region: eu-west-1
